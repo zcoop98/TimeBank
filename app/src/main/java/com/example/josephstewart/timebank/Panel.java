@@ -75,14 +75,25 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        if (!mainThread.isRunning()) {
-            //instantiate the background
+        background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background), this);
+        try {
+            if (!mainThread.isRunning()) {
+                //instantiate the background
+
+
+                manager = new StateManager(this, background);
+                //Start the game loop
+                mainThread.setRunning(true);
+                mainThread.start();
+            }
+        }
+        catch (Exception e) {
+
             background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background), this);
 
             manager = new StateManager(this, background);
-            //Start the game loop
-            mainThread.setRunning(true);
-            mainThread.start();
+            mainThread.run();
+
         }
     }
 

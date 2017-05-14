@@ -3,7 +3,25 @@
     package="com.example.josephstewart.timebank">
 
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
-    <application
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application>
+
+        <service android:name="com.example.josephstewart.timebank.backend.ScanService" />
+
+
+
+        <receiver
+            android:name="com.example.josephstewart.timebank.backend.BootCompletedReciever"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        android:name="com.example.josephstewart.timebank.backend.App"
         android:screenOrientation = "portrait"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
