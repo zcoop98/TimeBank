@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        UserData.load(this);
         Intent i = new Intent(this, ScanService.class);
         this.startService(i);
         setContentView(new Panel(this));

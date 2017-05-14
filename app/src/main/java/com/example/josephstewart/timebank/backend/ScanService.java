@@ -25,7 +25,7 @@ public class ScanService extends Service {
     public int onStartCommand(Intent intent, int flags, int start_id) {
         running = true;
         System.out.println("SCAN SERVICE STARTED");
-        Scanner thread = new Scanner();
+        Scanner thread = new Scanner(this);
         thread.start();
         return super.onStartCommand(intent, flags, start_id);
     }
