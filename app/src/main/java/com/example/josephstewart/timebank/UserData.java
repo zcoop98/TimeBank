@@ -61,7 +61,7 @@ public class UserData
         coins += i;
     }
 
-    public static void changePig
+    public static void changePig;
 
     //validations
     public static boolean setStartTime(int i)
