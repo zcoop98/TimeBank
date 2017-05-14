@@ -85,6 +85,7 @@ public class PigLibrary //storing class
                     R.drawable.b_music_porky, //resource location for default pig.
                     R.drawable.b_shopping_porky, //resource location for default pig.
                     R.drawable.b_magic_porky, //resource location for default pig.
+                    R.drawable.b_art_porky, //resource location for art pig.
                     R.drawable.b_cooking_porky, //resource location for cooking pig.
                     R.drawable.b_flying_porky, //resource location for flying pig.
                     R.drawable.b_lumberjack_porky, //resource location for lumberjack pig.
