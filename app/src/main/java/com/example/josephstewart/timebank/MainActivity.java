@@ -1,9 +1,12 @@
 package com.example.josephstewart.timebank;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.josephstewart.timebank.backend.ScanService;
 
 public class MainActivity extends Activity {
 
@@ -16,6 +19,8 @@ public class MainActivity extends Activity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Intent i = new Intent(this, ScanService.class);
+        this.startService(i);
         setContentView(new Panel(this));
     }
 }

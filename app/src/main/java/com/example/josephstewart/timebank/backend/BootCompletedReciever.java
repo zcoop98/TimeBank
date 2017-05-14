@@ -12,9 +12,8 @@ public class BootCompletedReciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println("Hey there everybody!");
-        Intent i = new Intent(context, ScanService.class);
-        context.startService(i);
+        System.out.println("19723");
+        System.out.println(intent.getAction());
     }
 
 }
