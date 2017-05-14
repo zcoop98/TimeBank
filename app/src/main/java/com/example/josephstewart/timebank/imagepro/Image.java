@@ -27,8 +27,9 @@ public class Image {
 
     private boolean isVisible;
 
-    public Image(Panel panel, Bitmap image, int x, int y)
+    public Image(Panel panel, int resource, int x, int y)
     {
+        image = BitmapFactory.decodeResource(panel.getResources(), resource);
         this.panel = panel;
         image = panel.transformBitmap(image);
         isVisible = true;
