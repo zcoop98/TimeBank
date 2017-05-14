@@ -77,7 +77,7 @@ public class UserData
             startTime = 0;
             endTime = 2359;
             timeUsed = 0;
-            timeAllowed = -1; //-1 means that there is no time / we are not tracking it rn
+            timeAllowed = 20; //-1 means that there is no time / we are not tracking it rn
             //-1 means unlimited time
             currentPigTheme = PigLibrary.PORKY;
             unlockedPigThemes = new ArrayList<Integer>();
@@ -86,6 +86,7 @@ public class UserData
             save(context);
             saveTimeUsed(context);
             doTutorial();
+            isInit = true;
         }
     }
 
@@ -172,7 +173,7 @@ public class UserData
 
     public static void increaseTimeSpent(long i, Context context)
     {
-        timeUsed =+ i;
+        timeUsed += i;
         useCount++;
         if(useCount >= USE_LIMIT) {
             useCount = 0;

@@ -44,34 +44,6 @@ public class MainState extends State
                 return null;
             }
         });
-
-        counter = new Image(panel, R.drawable.default_counter,10,10); //How to define button image?
-        counter.setOnClick(new Callable() {
-            public Object call() {
-                manager.changeState();  //Need another state to set userData?
-                return null;
-            }
-        });
-        counter.setOnUpdate(new Callable() {
-            public Object call() {
-                //update the image
-                return null;
-            }
-        });
-
-        settings = new Image(panel, R.drawable.default_settings,10,10); //Where is the settings icon?
-        settings.setOnClick(new Callable() {
-            public Object call() {
-                manager.changeState(SettingsState); //???
-                return null;
-            }
-        });
-        settings.setOnUpdate(new Callable() {
-            public Object call() {
-                //update the image
-                return null;
-            }
-        });
     }
 
     @Override
@@ -83,8 +55,8 @@ public class MainState extends State
     @Override
     public void onTouchEvent(MotionEvent e)
     {
-        counter.onTouchEvent(e);
-        settings.onTouchEvent(e);
+        //counter.onTouchEvent(e);
+        //settings.onTouchEvent(e);
     }
 
     @Override
@@ -92,8 +64,8 @@ public class MainState extends State
     {
         pig.draw(canvas);
         coin.draw(canvas);
-        counter.draw(canvas);
-        settings.draw(canvas);
+        //counter.draw(canvas);
+        //settings.draw(canvas);
 
     }
 
@@ -102,8 +74,8 @@ public class MainState extends State
     {
         pig.update();
         coin.update();
-        counter.update();
-        settings.update();
+        //counter.update();
+        //settings.update();
     }
 
     @Override

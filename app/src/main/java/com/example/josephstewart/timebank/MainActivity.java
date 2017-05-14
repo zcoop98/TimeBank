@@ -10,7 +10,7 @@ import com.example.josephstewart.timebank.backend.ScanService;
 
 public class MainActivity extends Activity {
 
-
+    public static boolean active = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,17 @@ public class MainActivity extends Activity {
         UserData.load(this);
         Intent i = new Intent(this, ScanService.class);
         this.startService(i);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         setContentView(new Panel(this));
+        active = true;
+    }
+
+    public void onStop() {
+        super.onStop();
+        active = false;
     }
 }

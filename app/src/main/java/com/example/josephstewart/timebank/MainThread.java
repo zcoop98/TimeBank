@@ -39,7 +39,7 @@ public class MainThread extends Thread {
         while (running) {
             //get time before update and draw are executed
             startTime = System.nanoTime();
-            canvas = null;
+            //canvas = null;
 
             try {
                 //lock canvas
