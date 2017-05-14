@@ -9,11 +9,12 @@ import java.util.ArrayList;
 public class UserData
 {
     //private so we don't allow anyone to change the variable
-    private int coins, startTime, endTime;
-    private int currentPigTheme;
-    private ArrayList<Integer> unlockedPigThemes;
-    private ArrayList<String> whiteList;
-    private long timeUsed, timeAllowed;
+    private static int coins, startTime, endTime;
+    private static int currentPigTheme;
+    private static ArrayList<Integer> unlockedPigThemes;
+    private static ArrayList<String> whiteList;
+    private static long timeUsed, timeAllowed;
+    private static boolean isInit = false;
 
     //constructor - default
     public UserData()
@@ -29,27 +30,27 @@ public class UserData
         unlockedPigThemes.add(PigLibrary.PORKY); //adds default pig to the list of allowed pigs
         whiteList = new ArrayList<String>();
     }
-    public int getCoins()
+    public static int getCoins()
     {
         return coins;
     }
-    public int getStartTime()
+    public static int getStartTime()
     {
         return startTime;
     }
-    public int getEndTime()
+    public static int getEndTime()
     {
         return endTime;
     }
-    public boolean isLocked()
+    public static boolean isLocked()
     {
         return ((timeUsed >= timeAllowed) || timeAllowed == -1);
     }
-    public ArrayList<String> whiteList()
+    public static ArrayList<String> whiteList()
     {
         return whiteList;
     }
-    public long getTimeUsed()
+    public static long getTimeUsed()
     {
         return timeUsed;
     }
@@ -59,8 +60,11 @@ public class UserData
     {
         coins += i;
     }
+
+    public static void changePig
+
     //validations
-    public boolean setStartTime(int i)
+    public static boolean setStartTime(int i)
     {
         //check to make sure it is less than endtime and greater than 0 --> return true
         if ((i < endTime) && (i > 0))
@@ -70,7 +74,8 @@ public class UserData
         }
         return false;
     }
-    public boolean setEndTime(int i)
+
+    public static boolean setEndTime(int i)
     {
         //end time: check to make sure it is greater than start time and less than 2359
         if ((i > startTime) && (i > 0))
@@ -80,10 +85,4 @@ public class UserData
         }
         return false;
     }
-    /*   public boolean changetimeUsed(long i)
-    {
-        //takes an long adds to time
-        return true;
-    }
-    */
 }

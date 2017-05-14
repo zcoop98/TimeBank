@@ -13,6 +13,7 @@ public class ScanService extends Service {
 
     private static boolean running = false;
 
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
