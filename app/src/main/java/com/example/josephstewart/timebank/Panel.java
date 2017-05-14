@@ -109,6 +109,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+        if (event.getAction() == MotionEvent.ACTION_UP)
         manager.onTouchEvent(event);
         return true;
     }
