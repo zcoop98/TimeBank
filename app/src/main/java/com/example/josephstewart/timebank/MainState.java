@@ -26,16 +26,10 @@ public class MainState extends State
     private Image counter;
     private Image settings;
 
-    public MainState(Panel panel, StateManager manager) {
-        super(panel,manager);
+    public MainState(Panel panel, final StateManager manager) {
+        super(panel, manager);
 
         pig = new Image(panel, R.drawable.default_pig,10,10);
-        pig.setOnClick(new Callable() {
-            public Object call() {
-                //do stuff
-                return null;
-            }
-        });
         pig.setOnUpdate(new Callable() {
             public Object call() {
                 //update the image
@@ -43,13 +37,7 @@ public class MainState extends State
             }
         });
 
-        coin = new Image(panel, R.drawable.default_coin,10,10);
-        coin.setOnClick(new Callable() {
-            public Object call() {
-                //do stuff
-                return null;
-            }
-        });
+        coin = new Image(panel, R.drawable.tcoin,10,10);
         coin.setOnUpdate(new Callable() {
             public Object call() {
                 //update the image
@@ -57,10 +45,10 @@ public class MainState extends State
             }
         });
 
-        counter = new Image(panel, R.drawable.default_counter,10,10);
+        counter = new Image(panel, R.drawable.default_counter,10,10); //How to define button image?
         counter.setOnClick(new Callable() {
             public Object call() {
-                //do stuff
+                manager.changeState();  //Need another state to set userData?
                 return null;
             }
         });
@@ -71,10 +59,10 @@ public class MainState extends State
             }
         });
 
-        settings = new Image(panel, R.drawable.default_settings,10,10);
+        settings = new Image(panel, R.drawable.default_settings,10,10); //Where is the settings icon?
         settings.setOnClick(new Callable() {
             public Object call() {
-                //do stuff
+                manager.changeState(SettingsState); //???
                 return null;
             }
         });
@@ -95,19 +83,27 @@ public class MainState extends State
     @Override
     public void onTouchEvent(MotionEvent e)
     {
-        //myImage.onTouchEvent(e);
+        counter.onTouchEvent(e);
+        settings.onTouchEvent(e);
     }
 
     @Override
     public void draw(Canvas canvas)
     {
-        //myImage.draw(canvas);
+        pig.draw(canvas);
+        coin.draw(canvas);
+        counter.draw(canvas);
+        settings.draw(canvas);
+
     }
 
     @Override
     public void update()
     {
-        //myImage.update();
+        pig.update();
+        coin.update();
+        counter.update();
+        settings.update();
     }
 
     @Override
