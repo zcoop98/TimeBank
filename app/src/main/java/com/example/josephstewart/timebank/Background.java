@@ -9,12 +9,14 @@ import android.graphics.Canvas;
 
 public class Background {
 
-    private int hi;
+    Panel panel;
     private Bitmap image;
     private int x=0,y=0;
 
-    public Background(Bitmap bitmap)
+    public Background(Bitmap bitmap,Panel panel)
     {
+        this.panel = panel;
+        bitmap = panel.transformBitmap(bitmap);
         image = bitmap;
     }
 
@@ -24,6 +26,7 @@ public class Background {
 
     public void changeBackground(Bitmap bitmap)
     {
+        bitmap = panel.transformBitmap(bitmap);
         image = bitmap;
     }
 

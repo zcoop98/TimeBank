@@ -22,7 +22,7 @@ public class TestState extends State {
     public TestState(Panel panel, StateManager manager) {
         super(panel,manager);
 
-        myImage = new Image(BitmapFactory.decodeResource(panel.getResources(),R.drawable.test_button),10,10);
+        myImage = new Image(panel,BitmapFactory.decodeResource(panel.getResources(),R.drawable.test_button),10,10);
         myImage.setOnClick(new Callable() {
             public Object call() {
                 System.out.println("Clicked!");

@@ -1,12 +1,17 @@
 package com.example.josephstewart.timebank;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 
 import com.example.josephstewart.timebank.states.StateManager;
 
@@ -18,6 +23,12 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
     public final boolean DEBUGGING = true;
 
+    public static final int REL_HEIGHT = 2560;
+    public static final int REL_WIDTH = 1440;
+
+    private static int sysHeight;
+    private static int sysWidth;
+
     private MainThread mainThread;
     private Background background;
     private StateManager manager;
@@ -27,19 +38,52 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
         getHolder().addCallback(this);
 
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        sysHeight = size.y;
+        sysWidth = size.x;
+
+        System.out.println("sysHeight = " + sysHeight);
+        System.out.println("sysWidth = " + sysWidth);
+
         mainThread = new MainThread(getHolder(), this);
         setFocusable(true);
     }
 
+    public int getSysHeight()
+    {
+        return sysHeight;
+    }
+
+    public int getSysWidth()
+    {
+        return sysWidth;
+    }
+
+    public Bitmap transformBitmap(Bitmap toTransform)
+    {
+        if (sysHeight == REL_HEIGHT && sysWidth == REL_WIDTH)
+            return toTransform;
+        double xScale = ((double)sysWidth)/((double)REL_WIDTH);
+        double yScale = ((double)sysHeight)/((double)REL_HEIGHT);
+        int newWidth = (int)(xScale * toTransform.getWidth());
+        int newHeight = (int)(yScale * toTransform.getHeight());
+        return Bitmap.createScaledBitmap(toTransform,newWidth,newHeight,false);
+    }
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        //instantiate the background
-        background = new Background(BitmapFactory.decodeResource(getResources(),R.drawable.background));
+        if (!mainThread.isRunning()) {
+            //instantiate the background
+            background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background), this);
 
-        manager = new StateManager(this,background);
-        //Start the game loop
-        mainThread.setRunning(true);
-        mainThread.start();
+            manager = new StateManager(this, background);
+            //Start the game loop
+            mainThread.setRunning(true);
+            mainThread.start();
+        }
     }
 
     @Override
@@ -80,6 +124,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
         manager.update();
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void draw(Canvas canvas)
     {

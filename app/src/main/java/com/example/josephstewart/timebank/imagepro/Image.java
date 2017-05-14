@@ -20,14 +20,32 @@ public class Image {
     private Bitmap image;
     private int x,y;
 
+    private Panel panel;
+
     private Callable onUpdate;
     private Callable onClick;
 
-    public Image(Bitmap image, int x, int y)
+    private boolean isVisible;
+
+    public Image(Panel panel, Bitmap image, int x, int y)
     {
+        this.panel = panel;
+        image = panel.transformBitmap(image);
+        isVisible = true;
         this.image = image;
         onUpdate = null;
         onClick = null;
+    }
+
+    public void changeImage(Bitmap image)
+    {
+        image = panel.transformBitmap(image);
+        this.image = image;
+    }
+
+    public void setVisible(boolean visible)
+    {
+        this.isVisible = visible;
     }
 
     public void setOnUpdate(Callable onUpdate)
@@ -49,7 +67,7 @@ public class Image {
 
     public void draw(Canvas canvas)
     {
-        canvas.drawBitmap(image,x,y,null);
+        if (isVisible) canvas.drawBitmap(image,x,y,null);
     }
 
     public void onTouchEvent(MotionEvent event)

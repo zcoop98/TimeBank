@@ -23,6 +23,8 @@ public class MainThread extends Thread {
         this.gamePanel = gamePanel;
     }
 
+    public boolean isRunning() {return running;}
+
     public void run()
     {
         //These variables are use for tracking average FPS
