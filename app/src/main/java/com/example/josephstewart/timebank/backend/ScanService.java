@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import java.io.File;
+
 /**
  * Created by josephstewart on 5/14/17.
  */
@@ -12,7 +14,6 @@ import android.support.annotation.Nullable;
 public class ScanService extends Service {
 
     private static boolean running = false;
-
 
     @Nullable
     @Override

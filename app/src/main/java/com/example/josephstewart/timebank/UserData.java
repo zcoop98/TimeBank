@@ -1,5 +1,6 @@
 package com.example.josephstewart.timebank;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -30,6 +31,15 @@ public class UserData
         unlockedPigThemes.add(PigLibrary.PORKY); //adds default pig to the list of allowed pigs
         whiteList = new ArrayList<String>();
     }
+
+    private static boolean fileExists(String fname) {return true;}
+
+    public static void load() {
+        if (fileExists("user_data"))
+        {
+
+        }
+    }
     public static int getCoins()
     {
         return coins;
@@ -50,10 +60,12 @@ public class UserData
     {
         return whiteList;
     }
+    public static ArrayList<Integer> getUnlockedPigThemes() {return unlockedPigThemes;}
     public static long getTimeUsed()
     {
         return timeUsed;
     }
+    public static long getTimeAllowed() {return timeAllowed;}
 
     //modifiers
     public void changeCoins(int i)
@@ -61,7 +73,12 @@ public class UserData
         coins += i;
     }
 
-    public static void changePig;
+    public static void changePig(int pTheme)
+    {
+        for (int i = 0; i < unlockedPigThemes.size(); i++) {
+            if (pTheme == unlockedPigThemes.get(i)) currentPigTheme = pTheme;
+        }
+    }
 
     //validations
     public static boolean setStartTime(int i)
