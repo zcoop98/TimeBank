@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 
 public class Background {
 
+    private int hi;
     private Bitmap image;
     private int x=0,y=0;
 
