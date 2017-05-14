@@ -1,64 +1,50 @@
 package com.example.josephstewart.timebank;
 
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.ResolveInfo;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.example.josephstewart.timebank.Panel;
 import com.example.josephstewart.timebank.imagepro.Image;
 
-/**
- */
+import java.util.List;
+
 
 public class SettingsState
 {
     private Image theImage;
 
-/*
- private Image myImage;
+    //getting applist
+    void getInstalledApplications ()
+    {
 
-    public TestState(Panel panel, StateManager manager) {
-        super(panel,manager);
+        final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        final List AppsList = getInstalledApplications().queryIntentActivities( mainIntent, 0);
+        for (Object object : AppsList)
+        {
+            ResolveInfo info = (ResolveInfo) object;
+            Drawable icon = getBaseContext().getPackageManager().getApplicationIcon(info.activityInfo.applicationInfo);
+            String strAppName  	= info.activityInfo.applicationInfo.publicSourceDir.toString();
+            String strPackageName  = info.activityInfo.applicationInfo.packageName.toString();
+            final String title 	= (String)((info != null) ? getBaseContext().getPackageManager().getApplicationLabel(info.activityInfo.applicationInfo) : "???");
+        }
+    }
+    //returns image for apps
+    Drawable getApplicationIcon (ApplicationInfo info)
+    {
+        if()
+        {
+            return
 
-        myImage = new Image(panel,R.drawable.test_button,10,10);
-        myImage.setOnClick(new Callable() {
-            public Object call() {
-                System.out.println("Clicked!");
-                return null;
-            }
-        });
-        myImage.setOnUpdate(new Callable() {
-            public Object call() {
-                //update the image
-                return null;
-            }
-        });
+        }
     }
 
-    @Override
-    public void init() {
 
-    }
-
-    @Override
-    public void onTouchEvent(MotionEvent e) {
-        myImage.onTouchEvent(e);
-    }
-
-    @Override
-    public void draw(Canvas canvas) {
-        myImage.draw(canvas);
-    }
-
-    @Override
-    public void update() {
-        myImage.update();
-    }
-
-    @Override
-    public void onKeyDown(int keyCode, KeyEvent keyEvent) {
-    }
- */
 
     /*
     SettingsState
