@@ -10,10 +10,10 @@ public class UserData
 {
     //private so we don't allow anyone to change the variable
     private int coins, startTime, endTime;
-    private String currentPigTheme;
-    private ArrayList<String> unlockedPigThemes, whiteList;
+    private int currentPigTheme;
+    private ArrayList<Integer> unlockedPigThemes;
+    private ArrayList<String> whiteList;
     private long timeUsed, timeAllowed;
-    public final static String DEFAULT = "default";
 
     //constructor - default
     public UserData()
@@ -24,9 +24,9 @@ public class UserData
         timeUsed = 0;
         timeAllowed = -1; //-1 means that there is no time / we are not tracking it rn
                         //-1 means unlimited time
-        currentPigTheme = DEFAULT;
-        unlockedPigThemes = new ArrayList<String>();
-        unlockedPigThemes.add(DEFAULT); //adds default pig to the list of allowed pigs
+        currentPigTheme = PigLibrary.PORKY;
+        unlockedPigThemes = new ArrayList<Integer>();
+        unlockedPigThemes.add(PigLibrary.PORKY); //adds default pig to the list of allowed pigs
         whiteList = new ArrayList<String>();
     }
     public int getCoins()
