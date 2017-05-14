@@ -96,25 +96,25 @@ public class PigLibrary //storing class
                     R.drawable.b_summer_porky, //resource location for summer pig.
             };
             //state classes defined
-            public final static int BPORKY = 0; //index location for default pig.
-            public final static int BBROKEN = 1; //index location for broken pig.
-            public final static int BSLEEPY = 2; //index location for sleepy pig.
-            public final static int BSMARTY = 3; //index location for default pig.
-            public final static int BSPORTY = 4; //index location for default pig.
-            public final static int BHANDY = 5; //index location for default pig.
-            public final static int BDANCY = 6; //index location for default pig.
-            public final static int BMUSIC = 7; //index location for default pig.
-            public final static int BMAGIC = 8; //index location for default pig.
-            public final static int BSHOPPING = 9; //index location for default pig.
-            public final static int BART = 10; //index location for default pig.
-            public final static int BCOOKING = 11; //index location for default pig.
-            public final static int BFLYING = 12; //index location for default pig.
-            public final static int BLUMBERJACK = 13; //index location for default pig.
-            public final static int BPIGLETS = 14; //index location for default pig.
-            public final static int BRAINYDAY = 15; //index location for default pig.
-            public final static int BPIRATE = 16; //index location for default pig.
-            public final static int BSAFARI = 17; //index location for default pig.
-            public final static int BSUMMER = 18; //index location for default pig.
+            //public final static int BPORKY = 0; //index location for default pig.     //Silhouette default does not exist
+            //public final static int BBROKEN = 1; //index location for broken pig.     //Silhouette broken does not exist
+            public final static int BSLEEPY = 0; //index location for sleepy pig.
+            public final static int BSMARTY = 1; //index location for default pig.
+            public final static int BSPORTY = 2; //index location for default pig.
+            public final static int BHANDY = 3; //index location for default pig.
+            public final static int BDANCY = 4; //index location for default pig.
+            public final static int BMUSIC = 5; //index location for default pig.
+            public final static int BMAGIC = 6; //index location for default pig.
+            public final static int BSHOPPING = 7; //index location for default pig.
+            public final static int BART = 8; //index location for default pig.
+            public final static int BCOOKING = 9; //index location for default pig.
+            public final static int BFLYING = 10; //index location for default pig.
+            public final static int BLUMBERJACK = 11; //index location for default pig.
+            public final static int BPIGLETS = 12; //index location for default pig.
+            public final static int BRAINYDAY = 13; //index location for default pig.
+            public final static int BPIRATE = 14; //index location for default pig.
+            public final static int BSAFARI = 15; //index location for default pig.
+            public final static int BSUMMER = 16; //index location for default pig.
 
 
 
