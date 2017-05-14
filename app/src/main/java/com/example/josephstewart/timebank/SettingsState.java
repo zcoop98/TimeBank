@@ -18,6 +18,7 @@ public class SettingsState
 {
     private Image theImage;
 
+    /**
     //getting applist
     void getInstalledApplications ()
     {

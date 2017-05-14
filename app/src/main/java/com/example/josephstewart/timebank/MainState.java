@@ -29,13 +29,14 @@ public class MainState extends State
     public MainState(Panel panel, final StateManager manager) {
         super(panel, manager);
 
-        pig = new Image(panel, R.drawable.default_pig,10,10);
+        pig = new Image(panel, R.drawable.default_pig,100,500);
         pig.setOnUpdate(new Callable() {
             public Object call() {
                 //update the image
                 return null;
             }
         });
+        pig.scale(2);
 
         coin = new Image(panel, R.drawable.tcoin,10,10);
         coin.setOnUpdate(new Callable() {
@@ -44,6 +45,7 @@ public class MainState extends State
                 return null;
             }
         });
+        coin.scale(.3);
     }
 
     @Override

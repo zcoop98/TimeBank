@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.example.josephstewart.timebank.Background;
+import com.example.josephstewart.timebank.MainState;
 import com.example.josephstewart.timebank.Panel;
 import com.example.josephstewart.timebank.TestState;
 
@@ -20,7 +21,7 @@ public class StateManager {
     private int currentState = 0;
     private Panel panel;
 
-    public final int TEST_STATE = 0;
+    public final int MAIN_STATE = 0;
 
     private Background background;
 
@@ -30,9 +31,9 @@ public class StateManager {
         states = new ArrayList<State>();
 
         this.background = background;
-        TestState testState = new TestState(panel,this);
+        MainState mainState = new MainState(panel,this);
 
-        states.add(testState);
+        states.add(mainState);
     }
 
     public void changeBackground(Bitmap image)

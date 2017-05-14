@@ -36,6 +36,15 @@ public class Image {
         this.image = image;
         onUpdate = null;
         onClick = null;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void scale(double scale) {
+        int newWidth = (int)(image.getWidth() * scale);
+        int newHeight = (int)(image.getHeight() * scale);
+
+        image = Bitmap.createScaledBitmap(image,newWidth,newHeight,false);
     }
 
     public void changeImage(Bitmap image)
