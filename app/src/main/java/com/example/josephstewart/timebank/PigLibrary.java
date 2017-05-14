@@ -25,7 +25,6 @@ public class PigLibrary //storing class
                 "Applewood Bacon",
                 "Piglets",
                 "Pork drops",
-                "Hot Bacon",
                 "Wild Boar",
 
             }; //saves all the pig names in an array
@@ -36,7 +35,7 @@ public class PigLibrary //storing class
                 R.drawable.broken_pig, //resource location for broken pig.
                 R.drawable.sleepy_porky, //resource location for sleepy pig.
                 R.drawable.smart_porky, //resource location for smarty pig.
-                R.drawable.sporty_porky, //resource location for sporty pig.
+                R.drawable.sporty_porky, //resource location for sporty pig.0/
                 R.drawable.handyman_porky, //resource location for handyman pig.
                 R.drawable.ballerina_porky, //resource location for ballerina pig.
                 R.drawable.music_porky, //resource location for music pig.
@@ -86,6 +85,7 @@ public class PigLibrary //storing class
                     R.drawable.b_music_porky, //resource location for default pig.
                     R.drawable.b_shopping_porky, //resource location for default pig.
                     R.drawable.b_magic_porky, //resource location for default pig.
+                    R.drawable.b_art_porky, //resource location for art pig.
                     R.drawable.b_cooking_porky, //resource location for cooking pig.
                     R.drawable.b_flying_porky, //resource location for flying pig.
                     R.drawable.b_lumberjack_porky, //resource location for lumberjack pig.
