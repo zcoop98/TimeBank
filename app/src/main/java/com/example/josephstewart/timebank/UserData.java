@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.io.FileOutputStream;
 
 /**
  * Created by Ashley on 5/13/2017.
@@ -18,6 +19,9 @@ public class UserData
 {
     //private so we don't allow anyone to change the variable
     private static final int USE_LIMIT = 30;
+    private static final String USER_DATA_FILENAME = "user_data";
+    private static final String USER_TIME_FILENAME = "time_data";
+    private static final String SPLIT_CHARS  = "!SP!";
     private static int coins, startTime, endTime;
     private static int currentPigTheme;
     private static ArrayList<Integer> unlockedPigThemes;
@@ -29,27 +33,58 @@ public class UserData
     //constructor - default
     public UserData()
     {
-
+        coins = 0;
+        startTime = 0;
+        endTime = 0;
+        currentPigTheme = 0; //Default theme
+        unlockedPigThemes = new ArrayList<Integer>();
+        whiteList = new ArrayList<String>();
+        timeUsed = 0;
+        timeAllowed = 0;
     }
 
     private static void doTutorial() {}
 
-    public static void save(Context context)
+    public static void save(Context context)    //Save to local storage
     {
+        FileOutputStream outputStream;
 
+        try {
+            outputStream = context.openFileOutput(USER_DATA_FILENAME, Context.MODE_PRIVATE);
+            outputStream.write(coins);
+            outputStream.write(SPLIT_CHARS.getBytes()); //coins>startTime>endTime>currentPigTheme>unlockedPigThemes
+            outputStream.write(startTime);
+            outputStream.write(SPLIT_CHARS.getBytes());
+            outputStream.write(endTime);
+            outputStream.write(SPLIT_CHARS.getBytes());
+            outputStream.write(currentPigTheme);
+            outputStream.write(SPLIT_CHARS.getBytes());
+            outputStream.write(unlockedPigThemes);      //Invalid, must find new way save unlocked pig themes, maybe binary string: 0-locked, 1-unlocked?
+            outputStream.write(SPLIT_CHARS.getBytes());
+            outputStream.close();
+        } catch (Exception e) {     //Data read error- reset to defaults
+            coins = 0;
+            startTime = 0;
+            endTime = 0;
+            currentPigTheme = 0; //Default theme
+            unlockedPigThemes = new ArrayList<Integer>();
+            whiteList = new ArrayList<String>();
+            timeUsed = 0;
+            timeAllowed = 0;
+        }
     }
 
-    public static void saveTimeUsed(Context context)
+    public static void saveTimeUsed(Context context)    //
     {
 
     }
 
     public static void load(Context context) {
         try {
-            FileInputStream fin = context.openFileInput("user_data");
+            FileInputStream fin = context.openFileInput(USER_DATA_FILENAME);
             InputStreamReader isr = new InputStreamReader(fin);
             BufferedReader reader = new BufferedReader(isr);
-            String rawData[] = reader.readLine().split("!SP!");
+            String rawData[] = reader.readLine().split(SPLIT_CHARS);
             coins = Integer.parseInt(rawData[0]);
             startTime = Integer.parseInt(rawData[1]);
             endTime = Integer.parseInt(rawData[2]);
@@ -92,7 +127,7 @@ public class UserData
 
     public static void loadTimeUsed(Context context) {
         try {
-            FileInputStream fin = context.openFileInput("time_data");
+            FileInputStream fin = context.openFileInput(USER_TIME_FILENAME);
             InputStreamReader isr = new InputStreamReader(fin);
             BufferedReader reader = new BufferedReader(isr);
             String rawData[] = reader.readLine().split("!SP!");
