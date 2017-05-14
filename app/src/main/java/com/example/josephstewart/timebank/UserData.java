@@ -17,12 +17,14 @@ import java.util.ArrayList;
 public class UserData
 {
     //private so we don't allow anyone to change the variable
+    private static final int USE_LIMIT = 30;
     private static int coins, startTime, endTime;
     private static int currentPigTheme;
     private static ArrayList<Integer> unlockedPigThemes;
     private static ArrayList<String> whiteList;
     private static long timeUsed, timeAllowed;
     private static boolean isInit = false;
+    private static int useCount = 0;
 
     //constructor - default
     public UserData()
@@ -31,8 +33,6 @@ public class UserData
     }
 
     private static void doTutorial() {}
-
-    private static boolean fileExists(String fname,Context context) {return true;}
 
     public static void save(Context context)
     {
@@ -168,5 +168,15 @@ public class UserData
             return true;
         }
         return false;
+    }
+
+    public static void increaseTimeSpent(long i, Context context)
+    {
+        timeUsed =+ i;
+        useCount++;
+        if(useCount >= USE_LIMIT) {
+            useCount = 0;
+            saveTimeUsed(context);
+        }
     }
 }
