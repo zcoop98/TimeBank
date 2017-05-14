@@ -1,4 +1,4 @@
-package com.example.josephstewart.timebank.states;
+package com.example.josephstewart.timebank;
 
 import com.example.josephstewart.timebank.imagepro.Image;
 import android.graphics.Canvas;
@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.example.josephstewart.timebank.Panel;
+import com.example.josephstewart.timebank.states.StateManager;
 
 /**
  * Created by Tsuna on 5/14/2017.

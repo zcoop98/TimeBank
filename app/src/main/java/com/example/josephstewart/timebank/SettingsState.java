@@ -1,4 +1,4 @@
-package com.example.josephstewart.timebank.states;
+package com.example.josephstewart.timebank;
 
 import android.graphics.Canvas;
 import android.view.KeyEvent;
